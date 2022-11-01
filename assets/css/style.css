@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+html {
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.desktop-view {
+  display: block;
+}
+.mobile-view {
+  display: none;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: hsl(36, 100%, 99%);
+  color: hsl(233, 8%, 79%);
+  padding-top: 3rem;
+  gap: 3rem;
+}
+
+/**
+ * nav
+ */
+ .overlay {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #00000088;
+}
+header {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9rem;
+  gap: 1rem;
+}
+.hamburger, .close-btn {
+  display: none;
+}
+.menu {
+  list-style-type: none;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.menu a {
+  transition: color 0.3s;
+}
+.menu a:hover,
+.menu a:focus {
+  color: hsl(5, 85%, 63%);
+}
+@media screen and (max-width: 757.5px) {
+  body {
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+  .hamburger{
+    display: block;
+  }
+  nav {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    grid-template-columns: 1fr;
+    padding: 5rem 1rem 1rem;
+    height: 100vh;
+    background-color: hsl(36, 100%, 99%);
+    overflow-y: auto;
+    width: 250px;
+    transition: right 0.6s;
+  }
+  nav.showed {
+    right: 0;
+    transition: right 0.3s;
+  }
+  .menu {
+    flex-direction: column;
+  }
+  .close-btn {
+    display: block;
+    position: absolute;
+    right: 4.2rem;
+    top: 2.3rem;
+  }
+}
+
+/**
+ * main
+ */
+main {
+  padding: 0 9rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+    "hero   hero    side" 
+    "bottom bottom  bottom";
+  column-gap: 2rem;
+  row-gap: 4rem;
+}
+.hero {
+  grid-area: hero;
+}
+.hero-img {
+  margin-bottom: 2rem;
+}
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.hero h1 {
+  color: hsl(240, 100%, 5%);
+  font-size: 3.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.hero p {
+  margin-bottom: 2rem;
+}
+.hero a {
+  display: inline-block;
+  color: hsl(36, 100%, 99%);
+  background-color: hsl(240, 100%, 5%);
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: background-color 0.3s;
+}
+.hero a:hover,
+.hero a:focus {
+  background-color: hsl(5, 85%, 63%);
+}
+.side {
+  grid-area: side;
+  background-color: hsl(240, 100%, 5%);
+  color: hsl(233, 8%, 79%);
+  padding: 2rem;
+  line-height: 1.6;
+}
+.side > h1 {
+  color: hsl(35, 77%, 62%);
+  font-size: 2.5rem;
+}
+.side-article:not(:last-child) {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid hsl(233, 8%, 79%);
+}
+.side h1 {
+  margin-bottom: 0.5rem;
+}
+.side a {
+  color: hsl(36, 100%, 99%);
+  transition: color 0.3s;
+}
+.side a:hover,
+.side a:focus {
+  color: hsl(35, 77%, 62%);
+}
+.bottom {
+  grid-area: bottom;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+.bottom-article {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.bottom-article img {
+  width: 100px;
+}
+.bottom h1 {
+  margin-bottom: 0.5rem;
+}
+.bottom a {
+  color: hsl(240, 100%, 5%);
+  transition: color 0.3s;
+}
+.bottom a:hover,
+.bottom a:focus {
+  color: hsl(5, 85%, 63%);
+}
+.article-num {
+  font-size: 2rem;
+  font-weight: 800;;
+}
+@media screen and (max-width: 1299.5px) {
+  main {
+    grid-template-columns: 2fr 2fr 2.5fr;
+  }
+  .hero h1 {
+    font-size: 3rem;
+  }
+  .bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bottom-article img {
+    width: 75px;
+  }
+}
+@media screen and (max-width: 1199.5px) {
+  main {
+    grid-template-columns: 2fr 2fr 3.5fr;
+  }
+  .hero-img img {
+    height: 200px;
+    object-fit: cover;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 991.5px) {
+  header, main {
+    padding: 0 4rem;
+  }
+  main {
+    grid-template-areas: "hero hero hero" "side side side" "bottom bottom bottom";
+  }
+  .hero-img img {
+    height: auto;
+  }
+}
+@media screen and (max-width: 757.5px) {
+  header, main {
+    padding: 0 2rem;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero-content {
+    gap: 1rem;
+  }
+  .bottom {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 500.1px) {
+  header, main {
+    padding: 0 1rem;
+  }
+  .desktop-view {
+    display: none;
+  }
+  .mobile-view {
+    display: block;
+  }
+}
+
+
+/**
+ * footer
+ */
+ footer {
+  padding: 20px;
+  background-color: hsl(0, 0%, 8%);;
+}
+.attribution {
+  text-align: center;
+  font-size: 0.7rem;
+}
+.attribution a {
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.attribution a:hover,
+.attribution a:focus {
+  color: hsl(5, 85%, 63%);
+}
